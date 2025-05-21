@@ -1,0 +1,101 @@
+# Executables and Libraries
+*.exe
+*.dll
+*.so
+*.dylib
+*.a
+*.lib
+*.o
+*.obj
+*.app
+
+# Object files
+*.o
+*.obj
+
+# Linker output
+*.exe
+*.pdb
+*.dll
+*.so
+*.dylib
+*.a
+*.lib
+
+# Libraries (static and dynamic)
+*.lib
+*.a
+*.so*
+*.dylib
+
+# Build directories (adjust as needed)
+build/
+bin/
+Debug/
+Release/
+out/
+/dist
+/output
+
+# IDE-specific files
+.vscode/
+.idea/
+*.vcxproj
+*.vcxproj.filters
+*.sln
+*.suo
+*.user
+*.cache
+ipch/
+*.VC.db
+*.VC.opendb
+*.opensdf
+*.sdf
+*.browse.VC.db
+
+# Visual Studio Code specific
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+# Qt-specific files
+*.user*
+*.rcc
+*.qrc
+*.ui
+
+# macOS-specific files
+.DS_Store
+._*
+
+# Temporary files
+*~
+# Backup files
+*.bak
+*.swp
+
+# Coverage reports
+*.gcda
+*.gcno
+lcov-report/
+
+# CMake-specific files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+
+# Testing
+*.stackdump
+
+# Autotools files
+config.log
+config.status
+Makefile.in
+aclocal.m4
+ltconfig
+ltmain.sh
+
+# Other
+/cpdlint.results
+/tags
