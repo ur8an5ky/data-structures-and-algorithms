@@ -3,6 +3,7 @@
 #include <iostream>
 #include <memory>
 #include <string>
+#include <cstddef>
 
 class Node
 {
@@ -21,6 +22,8 @@ class Node
         const std::string& getCountry() const;
         const unsigned int& getPopulation() const;
         Node* getNext();
+        std::unique_ptr<Node> popNext();
+        void setNext(std::unique_ptr<Node> next);
 };
 
 class List
@@ -42,4 +45,12 @@ class List
         // element access
         Node* front() const;
         Node* back() const;
+
+        // modifiers
+        void pushFront(std::unique_ptr<Node> city);
+        std::unique_ptr<Node> popFront();
+        // void removeFront();
+        void pushBack(std::unique_ptr<Node> city);
+        std::unique_ptr<Node> popBack();
+        // void removeBack();
 };

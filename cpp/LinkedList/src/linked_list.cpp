@@ -28,6 +28,16 @@ Node* Node::getNext()
     return this->next.get();
 }
 
+std::unique_ptr<Node> Node::popNext()
+{
+    return std::move(next);
+}
+
+void Node::setNext(std::unique_ptr<Node> next)
+{
+    this->next = std::move(next);
+}
+
 /*######################################################*/
 /*                          List                        */
 /*######################################################*/
@@ -60,5 +70,49 @@ Node* List::back() const
     {
         result = result->getNext();
     }
+    return result;
+}
+
+void List::pushFront(std::unique_ptr<Node> city)
+{
+    city->setNext(std::move(this->head));
+    this->head = std::move(city);
+    listSize++;
+}
+
+std::unique_ptr<Node> List::popFront()
+{
+    std::unique_ptr<Node> result = std::move(this->head);
+    this->head = std::move(result->popNext());
+    listSize--;
+
+    return result;
+}
+
+void List::pushBack(std::unique_ptr<Node> city)
+{
+    Node* tmp = this->front();
+    while(tmp->getNext())
+    {
+        tmp = tmp->getNext();
+    }
+    tmp->setNext(std::move(city));
+    listSize++;
+}
+
+std::unique_ptr<Node> List::popBack()
+{
+    Node* current = this->front();
+    Node* prev = nullptr;
+
+    while(!current->getNext())
+    {
+        prev = current;
+        current = current->getNext();
+    }
+
+    std::unique_ptr<Node> result = std::move(prev->popNext());
+    listSize--;
+
     return result;
 }
