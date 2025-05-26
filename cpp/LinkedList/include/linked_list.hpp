@@ -20,19 +20,25 @@ class Node
         const std::string& getName() const;
         const std::string& getCountry() const;
         const unsigned int& getPopulation() const;
-        // const Node& getNext();
+        Node* getNext();
 };
 
 class List
 {
     private:
         std::unique_ptr<Node> head;
-        int size;
+        size_t listSize;
 
     public:
-        List(std::unique_ptr<Node> city=nullptr);
+        List(): head(nullptr), listSize(0) {}
+        List(std::unique_ptr<Node> city);
         // czy default???
         ~List() = default;
-        Node* getHead() const;
-        // const Node& getHead();
+
+        // capacity
+        bool empty() const;
+        
+        // element access
+        Node* front() const;
+        Node* back() const;
 };
