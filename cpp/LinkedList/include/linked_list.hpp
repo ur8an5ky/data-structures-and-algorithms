@@ -37,7 +37,8 @@ class List
 
         // capacity
         bool empty() const;
-        
+        size_t size() const;
+
         // element access
         Node* front() const;
         Node* back() const;

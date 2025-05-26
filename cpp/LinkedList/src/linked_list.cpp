@@ -34,11 +34,21 @@ Node* Node::getNext()
 
 List::List(std::unique_ptr<Node> city)
 {
-    this->size = 1;
+    this->listSize = 1;
     this->head = std::move(city);
 }
 
-Node* List::getHead() const
+bool List::empty() const
+{
+    return listSize == 0;
+}
+
+size_t List::size() const
+{
+    return this->listSize;
+}
+
+Node* List::front() const
 {
     return this->head.get();
 }
