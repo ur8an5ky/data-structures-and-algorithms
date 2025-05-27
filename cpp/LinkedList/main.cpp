@@ -19,11 +19,11 @@ int main()
                 "The size of the travel list is: "<<travelList->size()<<std::endl<<std::endl;
 
     // List() constructor check
-    std::unique_ptr<List> travelList2 = std::make_unique<List>();
+    std::unique_ptr<List> emptyList = std::make_unique<List>();
 
-    std::cout<<travelList2->front()<<std::endl;
-    std::cout<<"Is the travel list empty? "<<travelList2->empty()<<std::endl<<
-                "The size of the travel list is: "<<travelList2->size()<<std::endl<<std::endl;
+    std::cout<<emptyList->front()<<std::endl;
+    std::cout<<"Is the travel list empty? "<<emptyList->empty()<<std::endl<<
+                "The size of the travel list is: "<<emptyList->size()<<std::endl<<std::endl;
 
     // adding more cities into the travel list
     std::unique_ptr<Node> katowice = std::make_unique<Node>("Katowice", "Poland", 279190);
@@ -40,12 +40,16 @@ int main()
     std::unique_ptr<Node> city1 = travelList->popFront();
     std::cout<<"City popped from front is: "<<city1->getName()<<std::endl;
     std::unique_ptr<Node> city2 = travelList->popBack();
-    std::cout<<"City popped from back is: "<<city2->getName()<<std::endl<<std::endl;
+    std::cout<<"City popped from back is: "<<city2->getName()<<std::endl;
 
-    std::cout<<travelList->front()->getName()<<std::endl;
-    std::cout<<travelList->back()->getName()<<std::endl;
     std::cout<<"Is the travel list empty? "<<travelList->empty()<<std::endl<<
                 "The size of the travel list is: "<<travelList->size()<<std::endl<<std::endl;
+
+    // edgecases
+    std::cout<<emptyList->front()<<std::endl;
+    std::unique_ptr<Node> noCity1 = emptyList->popFront();
+    std::unique_ptr<Node> noCity2 = emptyList->popFront();
+
 
     return 0;
 }

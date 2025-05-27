@@ -33,6 +33,7 @@ class List
         size_t listSize;
 
     public:
+        // dodać działanie dla edgecase-ów - typu jak zrobić popBack jak Lista jest pusta
         List(): head(nullptr), listSize(0) {}
         List(std::unique_ptr<Node> city);
         // czy default???

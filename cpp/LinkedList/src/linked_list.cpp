@@ -66,6 +66,11 @@ Node* List::front() const
 Node* List::back() const
 {
     Node* result = this->front();
+    if(this->empty())
+    {
+        return nullptr;
+    }
+    
     while(result->getNext())
     {
         result = result->getNext();
@@ -82,6 +87,13 @@ void List::pushFront(std::unique_ptr<Node> city)
 
 std::unique_ptr<Node> List::popFront()
 {
+    if(this->empty())
+    {
+        // jakies wyjatki
+        std::cout<<"There is nothing to pop! The List is empty!"<<std::endl;
+        return nullptr;
+    }
+
     std::unique_ptr<Node> result = std::move(this->head);
     this->head = std::move(result->popNext());
     listSize--;
@@ -102,6 +114,13 @@ void List::pushBack(std::unique_ptr<Node> city)
 
 std::unique_ptr<Node> List::popBack()
 {
+    if(this->empty())
+    {
+        // jakies wyjatki
+        std::cout<<"There is nothing to pop! The List is empty!"<<std::endl;
+        return nullptr;
+    }
+
     Node* current = this->front();
     Node* prev = nullptr;
 
