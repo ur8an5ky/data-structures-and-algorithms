@@ -105,7 +105,7 @@ std::unique_ptr<Node> List::popBack()
     Node* current = this->front();
     Node* prev = nullptr;
 
-    while(!current->getNext())
+    while(current->getNext())
     {
         prev = current;
         current = current->getNext();
