@@ -170,3 +170,43 @@ void List::removeBack()
     // current = nullptr;
     listSize--;
 }
+
+void List::insert(std::unique_ptr<Node> city, size_t idx)
+{
+    if(this->size() < idx)
+    {
+        // jakies wyjatki
+        std::cout<<"Given index is bigger than the size of a list!"<<std::endl;
+        return;
+    }
+    else if(idx < 0)
+    {
+        // jakies wyjatki
+        std::cout<<"Given index is lower than zero!"<<std::endl;
+        return;
+    }
+
+    if(idx == 0)
+    {
+        this->pushFront(std::move(city));
+        return;
+    }
+    else if(idx == this->size())
+    {
+        this->pushBack(std::move(city));
+        return;
+    }
+
+    size_t i = 1;
+    Node* current = this->front();
+    
+    while(i < idx)
+    {
+        current = current->getNext();
+        i++;
+    }
+
+    city->setNext(std::move(current->popNext()));
+    current->setNext(std::move(city));
+    listSize++;
+}

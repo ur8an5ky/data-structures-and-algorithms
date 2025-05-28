@@ -7,6 +7,8 @@ Journey plan to test Linked List implementation and performance.
 
 #include "linked_list.hpp"
 
+// TO DO: TESTY, WYJATKI (exceptions), REFACTOR
+
 int main()
 {
     std::unique_ptr<Node> krakow = std::make_unique<Node>("Krakow", "Poland", 806201);
@@ -36,7 +38,7 @@ int main()
     std::cout<<"Is the travel list empty? "<<travelList->empty()<<std::endl<<
                 "The size of the travel list is: "<<travelList->size()<<std::endl<<std::endl;
 
-    // popFront i popBakc
+    // popFront i popBack
     std::unique_ptr<Node> city1 = travelList->popFront();
     std::cout<<"City popped from front is: "<<city1->getName()<<std::endl;
     std::unique_ptr<Node> city2 = travelList->popBack();
@@ -65,10 +67,29 @@ int main()
                 "The size of the travel list is: "<<travelList->size()<<std::endl<<std::endl;
 
     // edgecases
-    // std::cout<<emptyList->front()<<std::endl;
-    // std::unique_ptr<Node> noCity1 = emptyList->popFront();
-    // std::unique_ptr<Node> noCity2 = emptyList->popFront();
+    std::cout<<emptyList->front()<<std::endl;
+    std::unique_ptr<Node> noCity1 = emptyList->popFront();
+    std::unique_ptr<Node> noCity2 = emptyList->popFront();
+    std::cout<<std::endl;
 
+    // insert
+    std::unique_ptr<Node> oswiecim = std::make_unique<Node>("Oswiecim", "Poland", 35577);
+    std::unique_ptr<Node> zakopane = std::make_unique<Node>("Zakopane", "Poland", 25204);
+    std::unique_ptr<Node> wieliczka = std::make_unique<Node>("Wieliczka", "Poland", 27845);
+    travelList->pushFront(std::move(oswiecim));
+    travelList->pushBack(std::move(zakopane));
 
+    std::cout<<travelList->front()->getName()<<std::endl;
+    std::cout<<travelList->back()->getName()<<std::endl;
+    std::cout<<"Is the travel list empty? "<<travelList->empty()<<std::endl<<
+                "The size of the travel list is: "<<travelList->size()<<std::endl<<std::endl;
+
+    travelList->insert(std::move(wieliczka), 2);
+
+    std::cout<<travelList->front()->getName()<<std::endl;
+    std::cout<<travelList->back()->getName()<<std::endl;
+    std::cout<<"Is the travel list empty? "<<travelList->empty()<<std::endl<<
+                "The size of the travel list is: "<<travelList->size()<<std::endl<<std::endl;    
+    
     return 0;
 }

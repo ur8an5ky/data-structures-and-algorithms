@@ -14,7 +14,6 @@ class Node
         std::unique_ptr<Node> next;
 
     public:
-        // Node();
         // lista inicjalizacyjna
         Node(std::string name, std::string country, unsigned int population, std::unique_ptr<Node> next=nullptr);
         ~Node() = default;
@@ -33,10 +32,8 @@ class List
         size_t listSize;
 
     public:
-        // dodać działanie dla edgecase-ów - typu jak zrobić popBack jak Lista jest pusta
         List(): head(nullptr), listSize(0) {}
         List(std::unique_ptr<Node> city);
-        // czy default???
         ~List() = default;
 
         // capacity
@@ -54,4 +51,5 @@ class List
         void pushBack(std::unique_ptr<Node> city);
         std::unique_ptr<Node> popBack();
         void removeBack();
+        void insert(std::unique_ptr<Node> city, size_t idx);
 };
