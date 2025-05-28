@@ -50,8 +50,8 @@ class List
         // modifiers
         void pushFront(std::unique_ptr<Node> city);
         std::unique_ptr<Node> popFront();
-        // void removeFront();
+        void removeFront();
         void pushBack(std::unique_ptr<Node> city);
         std::unique_ptr<Node> popBack();
-        // void removeBack();
+        void removeBack();
 };

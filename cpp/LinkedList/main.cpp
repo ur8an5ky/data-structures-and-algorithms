@@ -45,10 +45,29 @@ int main()
     std::cout<<"Is the travel list empty? "<<travelList->empty()<<std::endl<<
                 "The size of the travel list is: "<<travelList->size()<<std::endl<<std::endl;
 
+    // removeFront i removeBack
+    std::unique_ptr<Node> wroclaw = std::make_unique<Node>("Wroclaw", "Poland", 673743);
+    std::unique_ptr<Node> poznan = std::make_unique<Node>("Poznan", "Poland", 538439);
+    travelList->pushFront(std::move(wroclaw));
+    travelList->pushBack(std::move(poznan));
+
+    std::cout<<travelList->front()->getName()<<std::endl;
+    std::cout<<travelList->back()->getName()<<std::endl;
+    std::cout<<"Is the travel list empty? "<<travelList->empty()<<std::endl<<
+                "The size of the travel list is: "<<travelList->size()<<std::endl<<std::endl;
+
+    travelList->removeFront();
+    travelList->removeBack();
+
+    std::cout<<travelList->front()->getName()<<std::endl;
+    std::cout<<travelList->back()->getName()<<std::endl;
+    std::cout<<"Is the travel list empty? "<<travelList->empty()<<std::endl<<
+                "The size of the travel list is: "<<travelList->size()<<std::endl<<std::endl;
+
     // edgecases
-    std::cout<<emptyList->front()<<std::endl;
-    std::unique_ptr<Node> noCity1 = emptyList->popFront();
-    std::unique_ptr<Node> noCity2 = emptyList->popFront();
+    // std::cout<<emptyList->front()<<std::endl;
+    // std::unique_ptr<Node> noCity1 = emptyList->popFront();
+    // std::unique_ptr<Node> noCity2 = emptyList->popFront();
 
 
     return 0;

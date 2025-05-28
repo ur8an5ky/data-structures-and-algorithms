@@ -101,6 +101,19 @@ std::unique_ptr<Node> List::popFront()
     return result;
 }
 
+void List::removeFront()
+{
+    if(this->empty())
+    {
+        // jakies wyjatki
+        std::cout<<"There is nothing to remove! The List is empty!"<<std::endl;
+        return;
+    }
+
+    this->head = std::move(this->head->popNext());
+    listSize--;
+}
+
 void List::pushBack(std::unique_ptr<Node> city)
 {
     Node* tmp = this->front();
@@ -134,4 +147,26 @@ std::unique_ptr<Node> List::popBack()
     listSize--;
 
     return result;
+}
+
+void List::removeBack()
+{
+    if(this->empty())
+    {
+        // jakies wyjatki
+        std::cout<<"There is nothing to remove! The List is empty!"<<std::endl;
+        return;
+    }
+
+    Node* current = this->front();
+    Node* prev = nullptr;
+
+    while(current->getNext())
+    {
+        prev = current;
+        current = current->getNext();
+    }
+    prev->setNext(nullptr);
+    // current = nullptr;
+    listSize--;
 }
