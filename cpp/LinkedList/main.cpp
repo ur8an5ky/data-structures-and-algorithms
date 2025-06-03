@@ -7,7 +7,7 @@ Journey plan to test Linked List implementation and performance.
 
 #include "linked_list.hpp"
 
-// TO DO: TESTY, WYJATKI (exceptions), REFACTOR
+// TO DO: TESTY, WYJATKI (exceptions), REFACTOR, przeladowanie operatorow (do wypisywania zawartosci)
 
 int main()
 {
