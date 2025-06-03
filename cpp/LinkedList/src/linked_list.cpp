@@ -95,7 +95,7 @@ std::unique_ptr<Node> List::popFront()
     }
 
     std::unique_ptr<Node> result = std::move(this->head);
-    this->head = std::move(result->popNext());
+    this->head = result->popNext();
     listSize--;
 
     return result;
@@ -110,7 +110,7 @@ void List::removeFront()
         return;
     }
 
-    this->head = std::move(this->head->popNext());
+    this->head = this->head->popNext();
     listSize--;
 }
 
@@ -134,6 +134,14 @@ std::unique_ptr<Node> List::popBack()
         return nullptr;
     }
 
+    if (head->getNext() == nullptr)
+    {
+        std::unique_ptr<Node> result = std::move(head);
+        head.reset();
+        listSize--;
+        return result;
+    }
+
     Node* current = this->front();
     Node* prev = nullptr;
 
@@ -143,7 +151,7 @@ std::unique_ptr<Node> List::popBack()
         current = current->getNext();
     }
 
-    std::unique_ptr<Node> result = std::move(prev->popNext());
+    std::unique_ptr<Node> result = prev->popNext();
     listSize--;
 
     return result;
@@ -158,6 +166,14 @@ void List::removeBack()
         return;
     }
 
+    if (head->getNext() == nullptr)
+    {
+        std::unique_ptr<Node> result = std::move(head);
+        head.reset();
+        listSize--;
+        return;
+    }
+
     Node* current = this->front();
     Node* prev = nullptr;
 
@@ -167,7 +183,6 @@ void List::removeBack()
         current = current->getNext();
     }
     prev->setNext(nullptr);
-    // current = nullptr;
     listSize--;
 }
 
@@ -177,12 +192,6 @@ void List::insert(std::unique_ptr<Node> city, size_t idx)
     {
         // jakies wyjatki
         std::cout<<"Given index is bigger than the size of a list!"<<std::endl;
-        return;
-    }
-    else if(idx < 0)
-    {
-        // jakies wyjatki
-        std::cout<<"Given index is lower than zero!"<<std::endl;
         return;
     }
 
@@ -206,7 +215,7 @@ void List::insert(std::unique_ptr<Node> city, size_t idx)
         i++;
     }
 
-    city->setNext(std::move(current->popNext()));
+    city->setNext(current->popNext());
     current->setNext(std::move(city));
     listSize++;
 }
