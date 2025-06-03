@@ -14,3 +14,11 @@ file(GLOB SOURCES "src/*.cpp")
 add_executable(${PROJECT_NAME} main.cpp ${SOURCES} ${HEADERS})
 
 target_include_directories(${PROJECT_NAME} PRIVATE include)
+
+# Clang Tidy
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic")
+target_compile_options(${PROJECT_NAME} PRIVATE)
+
+set_target_properties(${PROJECT_NAME} PROPERTIES
+    CXX_CLANG_TIDY "clang-tidy" # Dostosuj checks do swoich potrzeb
+)

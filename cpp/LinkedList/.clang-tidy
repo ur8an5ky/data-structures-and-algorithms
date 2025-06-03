@@ -1,0 +1,20 @@
+---
+Checks:
+    - 'modernize-*'
+    - 'performance-*'
+    - 'readability-*'
+    - 'clang-analyzer-*'
+    - 'bugprone-*'
+    - 'cppcoreguidelines-init-variables'
+    - 'llvm-include-order'
+    - 'cppcoreguidelines-prefer-member-initializer'
+    - 'cppcoreguidelines-init-variables'
+    - 'llvmlibc-implementation-in-namespace'
+    - 'llvm-namespace-comment'
+    - 'misc-include-cleaner'
+    - 'misc-misplaced-const'
+    - 'misc-non-private-member-variables-in-classes'
+WarningsAsErrors:  '*'
+HeaderFilterRegex: .*
+AnalyzeOnly:     ''
+...
