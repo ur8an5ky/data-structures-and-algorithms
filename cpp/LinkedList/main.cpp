@@ -7,7 +7,7 @@ Journey plan to test Linked List implementation and performance.
 
 #include "linked_list.hpp"
 
-// TO DO: TESTY, WYJATKI (exceptions), REFACTOR, przeladowanie operatorow (do wypisywania zawartosci)
+// TO DO: TESTY, REFACTOR, przeladowanie operatorow (do wypisywania zawartosci), std::optional
 
 int main()
 {
@@ -66,12 +66,6 @@ int main()
     std::cout<<"Is the travel list empty? "<<travelList->empty()<<std::endl<<
                 "The size of the travel list is: "<<travelList->size()<<std::endl<<std::endl;
 
-    // edgecases
-    std::cout<<emptyList->front()<<std::endl;
-    std::unique_ptr<Node> noCity1 = emptyList->popFront();
-    std::unique_ptr<Node> noCity2 = emptyList->popFront();
-    std::cout<<std::endl;
-
     // insert
     std::unique_ptr<Node> oswiecim = std::make_unique<Node>("Oswiecim", "Poland", 35577);
     std::unique_ptr<Node> zakopane = std::make_unique<Node>("Zakopane", "Poland", 25204);
@@ -90,6 +84,53 @@ int main()
     std::cout<<travelList->back()->getName()<<std::endl;
     std::cout<<"Is the travel list empty? "<<travelList->empty()<<std::endl<<
                 "The size of the travel list is: "<<travelList->size()<<std::endl<<std::endl;    
+
+    // exceptions - for better readability used only here
+    std::unique_ptr<Node> nowy_sacz = std::make_unique<Node>("Nowy Sacz", "Poland", 80358);
+    try
+    {
+        travelList->insert(std::move(nowy_sacz), 10);
+    }
+    catch(const std::out_of_range& e)
+    {
+        std::cerr << "Error: " << e.what() << std::endl;
+    }
+
+    try
+    {
+        emptyList->removeFront();
+    }
+    catch(const std::out_of_range& e)
+    {
+        std::cerr << "Error: " << e.what() << std::endl;
+    }
+
+    try
+    {
+        emptyList->removeBack();
+    }
+    catch(const std::out_of_range& e)
+    {
+        std::cerr << "Error: " << e.what() << std::endl;
+    }
+
+    try
+    {
+        std::unique_ptr<Node> city99 = emptyList->popFront();
+    }
+    catch(const std::out_of_range& e)
+    {
+        std::cerr << "Error: " << e.what() << std::endl;
+    }
+
+    try
+    {
+        std::unique_ptr<Node> city98 = emptyList->popBack();
+    }
+    catch(const std::out_of_range& e)
+    {
+        std::cerr << "Error: " << e.what() << std::endl;
+    }
     
     return 0;
 }

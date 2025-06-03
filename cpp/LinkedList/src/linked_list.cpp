@@ -89,8 +89,7 @@ std::unique_ptr<Node> List::popFront()
 {
     if(this->empty())
     {
-        // jakies wyjatki
-        std::cout<<"There is nothing to pop! The List is empty!"<<std::endl;
+        throw std::out_of_range("Cannot pop from an empty list!");
         return nullptr;
     }
 
@@ -105,9 +104,7 @@ void List::removeFront()
 {
     if(this->empty())
     {
-        // jakies wyjatki
-        std::cout<<"There is nothing to remove! The List is empty!"<<std::endl;
-        return;
+        throw std::out_of_range("Cannot remove from an empty list!");
     }
 
     this->head = this->head->popNext();
@@ -129,8 +126,7 @@ std::unique_ptr<Node> List::popBack()
 {
     if(this->empty())
     {
-        // jakies wyjatki
-        std::cout<<"There is nothing to pop! The List is empty!"<<std::endl;
+        throw std::out_of_range("Cannot pop from an empty list!");
         return nullptr;
     }
 
@@ -161,9 +157,7 @@ void List::removeBack()
 {
     if(this->empty())
     {
-        // jakies wyjatki
-        std::cout<<"There is nothing to remove! The List is empty!"<<std::endl;
-        return;
+        throw std::out_of_range("Cannot remove from an empty list");
     }
 
     if (head->getNext() == nullptr)
@@ -190,9 +184,7 @@ void List::insert(std::unique_ptr<Node> city, size_t idx)
 {
     if(this->size() < idx)
     {
-        // jakies wyjatki
-        std::cout<<"Given index is bigger than the size of a list!"<<std::endl;
-        return;
+        throw std::out_of_range("Given index is bigger than the size of the list");
     }
 
     if(idx == 0)
