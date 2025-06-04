@@ -23,28 +23,28 @@ target_include_directories(${PROJECT_NAME} PRIVATE include)
 find_package(GTest REQUIRED)
 
 # UT
-add_executable(NodeTests tests/test_linked_list_node.cpp ${SOURCES})
-target_include_directories(NodeTests PRIVATE include)
-target_link_libraries(NodeTests PRIVATE GTest::GTest GTest::Main)
+add_executable(LinkedListTests tests/test_linked_list.cpp ${SOURCES})
+target_include_directories(LinkedListTests PRIVATE include)
+target_link_libraries(LinkedListTests PRIVATE GTest::GTest GTest::Main Threads::Threads)
 
 include(GoogleTest)
-gtest_discover_tests(NodeTests)
+gtest_discover_tests(LinkedListTests)
 
 # coverage
 add_custom_target(coverage
-    COMMAND ${CMAKE_COMMAND} -E env LLVM_PROFILE_FILE=default.profraw $<TARGET_FILE:NodeTests>
+    COMMAND ${CMAKE_COMMAND} -E env LLVM_PROFILE_FILE=default.profraw $<TARGET_FILE:LinkedListTests>
     COMMAND llvm-profdata merge -sparse default.profraw -o default.profdata
-    COMMAND llvm-cov report $<TARGET_FILE:NodeTests> -instr-profile=default.profdata
+    COMMAND llvm-cov report $<TARGET_FILE:LinkedListTests> -instr-profile=default.profdata
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-    DEPENDS NodeTests
+    DEPENDS LinkedListTests
     COMMENT "Running coverage analysis"
 )
 
 add_custom_target(coverage_html
-    COMMAND ${CMAKE_COMMAND} -E env LLVM_PROFILE_FILE=default.profraw $<TARGET_FILE:NodeTests>
+    COMMAND ${CMAKE_COMMAND} -E env LLVM_PROFILE_FILE=default.profraw $<TARGET_FILE:LinkedListTests>
     COMMAND llvm-profdata merge -sparse default.profraw -o default.profdata
-    COMMAND llvm-cov show $<TARGET_FILE:NodeTests> -instr-profile=default.profdata -format=html -output-dir=${CMAKE_BINARY_DIR}/coverage_report
+    COMMAND llvm-cov show $<TARGET_FILE:LinkedListTests> -instr-profile=default.profdata -format=html -output-dir=${CMAKE_BINARY_DIR}/coverage_report
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-    DEPENDS NodeTests
+    DEPENDS LinkedListTests
     COMMENT "Generating coverage HTML report"
 )
