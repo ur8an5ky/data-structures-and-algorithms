@@ -93,7 +93,7 @@ int main()
     }
     catch(const std::out_of_range& e)
     {
-        std::cerr << "Error: " << e.what() << std::endl;
+        std::cerr<<"Error: "<<e.what()<<std::endl;
     }
 
     try
@@ -102,7 +102,7 @@ int main()
     }
     catch(const std::out_of_range& e)
     {
-        std::cerr << "Error: " << e.what() << std::endl;
+        std::cerr<<"Error: "<<e.what()<<std::endl;
     }
 
     try
@@ -111,7 +111,7 @@ int main()
     }
     catch(const std::out_of_range& e)
     {
-        std::cerr << "Error: " << e.what() << std::endl;
+        std::cerr<<"Error: "<<e.what()<<std::endl;
     }
 
     try
@@ -120,7 +120,7 @@ int main()
     }
     catch(const std::out_of_range& e)
     {
-        std::cerr << "Error: " << e.what() << std::endl;
+        std::cerr<<"Error: "<<e.what()<<std::endl;
     }
 
     try
@@ -129,7 +129,7 @@ int main()
     }
     catch(const std::out_of_range& e)
     {
-        std::cerr << "Error: " << e.what() << std::endl;
+        std::cerr<<"Error: "<<e.what()<<std::endl;
     }
     
     return 0;
