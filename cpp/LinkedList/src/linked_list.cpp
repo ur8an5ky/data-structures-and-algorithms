@@ -1,13 +1,5 @@
 #include "linked_list.hpp"
 
-Node::Node(std::string name, std::string country, unsigned int population, std::unique_ptr<Node> next)
-{
-    this->name = name;
-    this->country = country;
-    this->population = population;
-    this->next = std::move(next);
-}
-
 const std::string& Node::getName() const
 {
     return this->name;

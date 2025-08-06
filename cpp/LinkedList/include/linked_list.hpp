@@ -14,8 +14,8 @@ class Node
         std::unique_ptr<Node> next;
 
     public:
-        // lista inicjalizacyjna
-        Node(std::string name, std::string country, unsigned int population, std::unique_ptr<Node> next=nullptr);
+        Node(std::string name, std::string country, unsigned int population, std::unique_ptr<Node> next=nullptr):
+            name(name), country(country), population(population), next(std::move(next)) {}
         ~Node() = default;
         const std::string& getName() const;
         const std::string& getCountry() const;
