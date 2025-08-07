@@ -74,3 +74,16 @@ print(ll2.stringify_list())
 ###########################################################################
 #####       Two-Pointer Linked List Techniques
 ###########################################################################
+print("\n\nTest of two-pointer techniques\nLinkedList generation:")
+ll3 = LinkedList()
+
+ll3.generate_test_linked_list(12)
+print(ll3.stringify_list())
+
+print("4-th last node in LinkedList:")
+nth_last = ll3.nth_last_node(4)
+print(nth_last.value)
+
+print("\nMiddle node in LinkedList:")
+middle_node = ll3.find_middle()
+print(middle_node.value)

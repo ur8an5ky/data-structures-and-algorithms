@@ -45,3 +45,40 @@ class LinkedList:
                     current_node = None
                 else:
                     current_node = next_node
+                    
+    def nth_last_node(self, n):
+        n += 1
+        result_node = None
+        current_node = self.head_node
+        count = 1
+
+        while current_node:
+            current_node = current_node.get_next_node()
+            count += 1
+
+            if count > n:
+                if result_node:
+                    result_node = result_node.get_next_node()
+                else:
+                    result_node = self.head_node
+
+        return result_node
+    
+    def find_middle(self):
+        middle_node = self.head_node
+        current_node = self.head_node
+        count = 1
+
+        while current_node:
+            if count%2 == 0:
+                middle_node = middle_node.get_next_node()
+            
+            current_node = current_node.get_next_node()
+            count += 1
+
+        return middle_node
+
+    def generate_test_linked_list(self, n):
+        for i in range(n, 0, -1):
+            self.insert_beginning(i)
+        return self
